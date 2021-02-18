@@ -9,6 +9,7 @@
     <title>Lector de feeds</title>
 </head>
 <body>
+
     <!--formulario para añadir la URL a leer-->
     <div>
         <form method="POST" action="">
@@ -16,7 +17,7 @@
         </form>
     <?php
     //URL a leer por defecto
-    $url = "http://feeds.weblogssl.com/xataka2";
+    $url = "https://es.ign.com/feed.xml";
     if(isset($_POST['submit'])){
         if($_POST['feedurl'] != ''){
             $url = $_POST['feedurl'];
@@ -38,6 +39,7 @@
         $site = $feeds->channel->title;
         $sitelink = $feeds->channel->link;
         echo '<h1>'.$site.'</h1>';
+        echo '<h1>Últimas noticias:</h1>';
         //Por cada noticia:
         foreach ($feeds->channel->item as $item) {
             //Creamos variables con información de la noticia
@@ -46,7 +48,7 @@
             $description = $item->description;
             $postDate = $item->pubDate;
             $pubDate = date('D, d M Y',strtotime($postDate));
-            if($i>=5) break; //5 es el número de noticias a mostrar
+            if($i>=10) break; //5 es el número de noticias a mostrar
     
             //Mostramos información por pantalla de la noticia
             echo '<div>';
@@ -60,6 +62,11 @@
             //echo implode(' ', array_slice(explode(' ', $description), 0, 20)) . "...";
             echo '<div>'.$description.'</div>';
             echo '<a href="'.$link.'">Leer más</a>';
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
             echo '</div>';
             echo '</div>';
             $i++;
