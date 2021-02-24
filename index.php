@@ -10,12 +10,8 @@
 </head>
 <body>
 
-    <!--formulario para añadir la URL a leer-->
-    <div>
-        <form method="POST" action="">
-            <input type="text" name="feedurl" placeholder="Escribe el feeds">&nbsp;<input type="submit" value="Enviar" name="submit">
-        </form>
     <?php
+    echo "<link rel=stylesheet href=css.css>";
     //URL a leer por defecto
     $url = "https://es.ign.com/feed.xml";
     if(isset($_POST['submit'])){
@@ -38,8 +34,8 @@
         //Descripción del canal
         $site = $feeds->channel->title;
         $sitelink = $feeds->channel->link;
-        echo '<h1>'.$site.'</h1>';
-        echo '<h1>Últimas noticias:</h1>';
+        echo '<div class="header"><h1>'.$site.'</h1></div>';
+        echo '<div class="header"><h2>Últimas noticias:</h2></div>';
         //Por cada noticia:
         foreach ($feeds->channel->item as $item) {
             //Creamos variables con información de la noticia
@@ -51,6 +47,7 @@
             if($i>=10) break; //5 es el número de noticias a mostrar
     
             //Mostramos información por pantalla de la noticia
+            echo '<div class="resto">';
             echo '<div>';
             echo '<div>';
             //Título de la noticia
@@ -61,15 +58,9 @@
             echo '<div>';
             //echo implode(' ', array_slice(explode(' ', $description), 0, 20)) . "...";
             echo '<div>'.$description.'</div>';
-            echo '<a href="'.$link.'">Leer más</a>';
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
             echo '</div>';
             echo '</div>';
-            $i++;
+            echo '</div>';
         }
     }else{
         //Error que se muestra si no hay nada que mostrar

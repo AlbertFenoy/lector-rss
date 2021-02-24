@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.header h1 {
+    font-size: 80px;
+    padding: 1%;
+    font: bold;
+    align-items: center;
+}
+
+.header h2 {
+    font-size: 40px;
+    padding: 1%;
+    font: bold;
+}
+
+.resto {
+    padding-left: 1%;
+    padding-bottom: 5%;
+}
